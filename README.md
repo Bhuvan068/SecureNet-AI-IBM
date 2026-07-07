@@ -3,7 +3,8 @@
 
 > AI-powered Security Operations Center (SOC) Assistant built using **IBM watsonx.ai Granite**, **IBM AutoAI**, and an **Observer–Executor Multi-Agent Architecture**.
 
-[img1]
+<img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/6b3d6dc8-4b84-4a6b-9074-71ad2e933622" />
+
 
 ---
 
