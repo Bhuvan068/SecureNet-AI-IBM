@@ -13,7 +13,7 @@ import {
 } from '@mui/icons-material';
 import {
   analyseFeatures, uploadFile, pollUploadStatus,
-  sendChat, fetchChatHistory, fetchChats, fetchChatMessages,
+  sendChat, fetchChats, fetchChatMessages,
   updateChat, deleteChat, clearAllChats,
   type NetworkFeatures, type AnalysisResponse
 } from '../api/client';

@@ -109,6 +109,19 @@ export interface AttackTrend {
   normal: number;
 }
 
+export interface AlertItem {
+  id: number;
+  alert_id: string;
+  incident_id?: string;
+  trigger: string;
+  message: string;
+  severity: string;
+  channel: string;
+  status: string;
+  timestamp: string;
+  extra_data?: any;
+}
+
 // ─── API calls ────────────────────────────────────────────────────────────────
 
 export const analyseFeatures = (features: NetworkFeatures, source = 'manual') =>

@@ -17,7 +17,7 @@ export const LiveDashboard: React.FC = () => {
 
   useEffect(() => {
     let ws: WebSocket;
-    let reconnectTimeout: NodeJS.Timeout;
+    let reconnectTimeout: ReturnType<typeof setInterval>;
 
     const connect = () => {
       setWsStatus('connecting');

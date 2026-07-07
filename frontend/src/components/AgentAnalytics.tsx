@@ -11,35 +11,35 @@ import axios from 'axios';
 // Analytics Interfaces
 interface AgentMetric {
   agent_name: string;
-  total_executions: int;
-  successful_executions: int;
-  failed_executions: int;
-  success_rate: float;
-  failure_rate: float;
-  avg_response_time_ms: float;
-  median_response_time_ms: float;
-  p95_latency_ms: float;
-  p99_latency_ms: float;
-  avg_confidence: float;
-  max_confidence: float;
-  min_confidence: float;
+  total_executions: number;
+  successful_executions: number;
+  failed_executions: number;
+  success_rate: number;
+  failure_rate: number;
+  avg_response_time_ms: number;
+  median_response_time_ms: number;
+  p95_latency_ms: number;
+  p99_latency_ms: number;
+  avg_confidence: number;
+  max_confidence: number;
+  min_confidence: number;
 }
 
 interface TrendPoint {
   timestamp: string;
   agent_name: string;
-  value: float;
+  value: number;
 }
 
 interface ErrorAnalysis {
   error_message: string;
-  count: int;
-  frequency: float;
+  count: number;
+  frequency: number;
 }
 
 interface ThroughputPoint {
   timestamp: string;
-  requests_per_minute: int;
+  requests_per_minute: number;
 }
 
 interface AnalyticsData {
