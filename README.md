@@ -451,25 +451,41 @@ OR
 
 ## Chat Assistant
 
-[img6]
+The SecureNet AI SOC Copilot only handles cybersecurity, SOC operations, incident response, threat intelligence, dashboard analytics, and SecureNet AI-related queries.
+
+<img width="509" height="676" alt="image" src="https://github.com/user-attachments/assets/d4854e7c-8a45-41ad-a7aa-d112819cb29f" />
+
+<img width="518" height="668" alt="image" src="https://github.com/user-attachments/assets/7d303d2e-c4d3-47e9-ae57-6041e5d03e1e" />
+
+## Manual intrusion analysis, file upload, and AI-powered SOC chat
+
+<img width="1536" height="822" alt="image" src="https://github.com/user-attachments/assets/c3f3e95b-438e-42bd-a72f-3377ee5aa8fd" />
 
 ---
 
 ## Threat Heatmap
 
-[img7]
+
+<img width="1535" height="829" alt="image" src="https://github.com/user-attachments/assets/a952b2e1-575d-4b08-8c7a-b8320bf4171d" />
+
+
 
 ---
 
-## Executive Dashboard
+## Knowledge Graph
 
-[img8]
+<img width="1536" height="823" alt="image" src="https://github.com/user-attachments/assets/c504929e-9117-44b3-85f6-35cced3dd540" />
+
 
 ---
 
-## Digital Twin
+## Recent Incidents
 
-[img9]
+<img width="1536" height="839" alt="image" src="https://github.com/user-attachments/assets/0860862d-a2c5-4392-9ff4-c90e13aa07d1" />
+
+## Settings
+
+<img width="1525" height="820" alt="image" src="https://github.com/user-attachments/assets/03039b4b-a59b-48de-9444-838acc3b9532" />
 
 ---
 
