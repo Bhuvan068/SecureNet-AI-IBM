@@ -1,0 +1,44 @@
+version: '3.9'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: securenet-backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - IBM_API_KEY=${IBM_API_KEY:-}
+      - IBM_DEPLOYMENT_URL=${IBM_DEPLOYMENT_URL:-https://us-south.ml.cloud.ibm.com}
+      - IBM_DEPLOYMENT_ID=${IBM_DEPLOYMENT_ID:-}
+      - IBM_SPACE_ID=${IBM_SPACE_ID:-}
+      - IBM_WATSONX_URL=${IBM_WATSONX_URL:-https://us-south.ml.cloud.ibm.com}
+      - IBM_PROJECT_ID=${IBM_PROJECT_ID:-}
+      - GRANITE_MODEL_ID=${GRANITE_MODEL_ID:-ibm/granite-13b-instruct-v2}
+      - SECRET_KEY=${SECRET_KEY:-change-me}
+      - DEBUG=${DEBUG:-false}
+    volumes:
+      - securenet_db:/app/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: securenet-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  securenet_db:
+    driver: local
