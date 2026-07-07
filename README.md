@@ -219,7 +219,10 @@ Train_data.csv
 
 or manually enter network features through the Chat Assistant.
 
-[img2]
+## Distribution of Network Protocol Types
+
+<img width="1081" height="784" alt="image" src="https://github.com/user-attachments/assets/42721421-c8cb-4369-bac0-25fc66656d6f" />
+
 
 ---
 
@@ -251,7 +254,6 @@ or manually enter network features through the Chat Assistant.
 
 ✔ Executive SOC Dashboard
 
-[img3]
 
 ---
 
@@ -266,7 +268,6 @@ IBM Granite powered AI assistant capable of:
 - Report generation
 - Historical case lookup
 
-[img4]
 
 ---
 
@@ -296,6 +297,10 @@ SecureNet-AI/
 ├── docker-compose.yml
 └── README.md
 ```
+## Distribution of Network Services
+
+
+<img width="1483" height="980" alt="image" src="https://github.com/user-attachments/assets/39847ebb-6c63-4846-bba1-892b0d1eb217" />
 
 ---
 
