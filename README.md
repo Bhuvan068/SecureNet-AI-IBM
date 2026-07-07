@@ -444,7 +444,8 @@ OR
 
 ## Dashboard
 
-[img5]
+<img width="1531" height="827" alt="image" src="https://github.com/user-attachments/assets/a74b2480-6e08-4a39-8412-09018b8dec1f" />
+
 
 ---
 
