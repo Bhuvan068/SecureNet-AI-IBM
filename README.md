@@ -37,60 +37,9 @@ Instead of only predicting whether traffic is malicious, SecureNet AI can:
 
 # 🏗️ System Architecture
 
-```text
-                     ┌─────────────────────────────┐
-                     │   User / Uploaded Dataset   │
-                     │ CSV • Excel • JSON • Logs   │
-                     └──────────────┬──────────────┘
-                                    │
-                                    ▼
-                         ┌────────────────────┐
-                         │  Observer Agent    │
-                         │ Validation         │
-                         └─────────┬──────────┘
-                                   │
-                                   ▼
-                      ┌─────────────────────────┐
-                      │ Detection Agent         │
-                      │ IBM AutoAI Prediction   │
-                      └─────────┬───────────────┘
-                                │
-                                ▼
-                 ┌──────────────────────────────┐
-                 │ Threat Reasoning Agent       │
-                 │ IBM Granite LLM              │
-                 └─────────┬────────────────────┘
-                           │
-                           ▼
-              ┌─────────────────────────────┐
-              │ Historical Memory Agent     │
-              │ SQLite Similarity Search    │
-              └─────────┬───────────────────┘
-                        │
-                        ▼
-               ┌────────────────────────────┐
-               │ Comparison Engine          │
-               │ Historical vs Current      │
-               └─────────┬──────────────────┘
-                         │
-                         ▼
-              ┌─────────────────────────────┐
-              │ Mitigation Agent            │
-              │ AI Response Planning        │
-              └─────────┬───────────────────┘
-                        │
-                        ▼
-              ┌─────────────────────────────┐
-              │ Report Agent                │
-              │ SOC Incident Report         │
-              └─────────┬───────────────────┘
-                        │
-        ┌───────────────┴─────────────────┐
-        ▼                                 ▼
-SQLite Historical DB              React Dashboard
-```
+<img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/3396310c-ff51-466b-a656-5b1fc4c4669c" />
 
----
+
 
 # 🤖 Multi-Agent Architecture
 
@@ -119,7 +68,7 @@ SQLite Historical DB              React Dashboard
 
 | Category | Technology |
 |-----------|------------|
-| AI / LLM | IBM watsonx Granite 13B |
+| AI / LLM | Granite-4-h-small |
 | Machine Learning | IBM AutoAI |
 | ML Algorithm | Optimized Snap Decision Tree Classifier |
 | Backend | FastAPI |
