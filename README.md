@@ -5,6 +5,11 @@
 
 <img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/6b3d6dc8-4b84-4a6b-9074-71ad2e933622" />
 
+Upload the included dataset:
+
+Train_data.csv
+or manually enter network features through the Chat Assistant.
+
 ### 🚀 Live Deployment
 
 The complete SecureNet AI system is deployed using Render Web Services.
