@@ -8,9 +8,12 @@ from typing import Any, Dict, List, Optional
 import uuid
 import asyncio
 
+import traceback
 from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile, Query, Body, BackgroundTasks
+from fastapi.responses import JSONResponse
 from sqlalchemy import select, func, desc, text
 from sqlalchemy.ext.asyncio import AsyncSession
+from app.agents.soc_copilot_agent import soc_copilot_agent
 
 from app.database import get_db
 from app.pipeline import run_pipeline, run_batch_pipeline
@@ -257,29 +260,44 @@ class ConversationUpdate(BaseModel):
     title: Optional[str] = None
     is_pinned: Optional[bool] = None
 
-@router.post("/chat", response_model=ChatResponse)
+@router.post("/chat")
 async def chat(request: ChatRequest, db: AsyncSession = Depends(get_db)):
-    context = request.context or {}
-    if request.incident_id and not context:
-        result = (await db.execute(select(Incident).where(Incident.incident_id == request.incident_id))).scalar_one_or_none()
-        if result:
-            context = {"incident_id": result.incident_id, "prediction": result.prediction,
-                       "attack_type": result.attack_type, "severity": result.severity, "confidence": result.confidence}
-    
-    response_text = await chat_agent.chat(request.message, context)
-    
-    conv_id = request.conversation_id
-    if not conv_id:
-        conv_id = str(uuid.uuid4())
-        new_conv = ChatConversation(conversation_id=conv_id, title=request.message[:50] + "...")
-        db.add(new_conv)
-        await db.commit() # Commit to generate ID
+    try:
+        if not request.message or not request.message.strip():
+            return JSONResponse(status_code=400, content={"error": "Message cannot be empty"})
 
-    db.add(ChatMessage(conversation_id=conv_id, role="user", content=request.message, incident_id=request.incident_id))
-    db.add(ChatMessage(conversation_id=conv_id, role="assistant", content=response_text, incident_id=request.incident_id))
-    await db.commit()
-    
-    return ChatResponse(response=response_text, incident_id=request.incident_id, conversation_id=conv_id)
+        context = request.context or {}
+        if request.incident_id and not context:
+            result = (await db.execute(select(Incident).where(Incident.incident_id == request.incident_id))).scalar_one_or_none()
+            if result:
+                context = {"incident_id": result.incident_id, "prediction": result.prediction,
+                           "attack_type": result.attack_type, "severity": result.severity, "confidence": result.confidence}
+        
+        response_text = ""
+        try:
+            from app.agents.chat_agent import chat_agent
+            response_text = await chat_agent.chat(request.message, context)
+        except Exception as e:
+            logging.error(f"IBM Granite unavailable, falling back to local agent. Error: {e}")
+            logging.error(traceback.format_exc())
+            response_text = await soc_copilot_agent.chat(request.message)
+            
+        conv_id = request.conversation_id
+        if not conv_id:
+            conv_id = str(uuid.uuid4())
+            new_conv = ChatConversation(conversation_id=conv_id, title=request.message[:50] + "...")
+            db.add(new_conv)
+            await db.commit() # Commit to generate ID
+
+        db.add(ChatMessage(conversation_id=conv_id, role="user", content=request.message, incident_id=request.incident_id))
+        db.add(ChatMessage(conversation_id=conv_id, role="assistant", content=response_text, incident_id=request.incident_id))
+        await db.commit()
+        
+        return ChatResponse(response=response_text, incident_id=request.incident_id, conversation_id=conv_id)
+    except Exception as e:
+        logging.error(f"Unexpected error in /chat endpoint: {e}")
+        logging.error(traceback.format_exc())
+        return JSONResponse(status_code=500, content={"error": "An internal server error occurred while processing the chat request."})
 
 @router.get("/chats")
 async def list_conversations(db: AsyncSession = Depends(get_db)):
