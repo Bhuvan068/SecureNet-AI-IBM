@@ -38,3 +38,10 @@ async def init_db():
     async with engine.begin() as conn:
         from app import models  # noqa: F401
         await conn.run_sync(Base.metadata.create_all)
+        
+        # Ensure conversation_id exists in chat_messages table (migration for existing DBs)
+        from sqlalchemy import text
+        try:
+            await conn.execute(text("ALTER TABLE chat_messages ADD COLUMN conversation_id VARCHAR;"))
+        except Exception:
+            pass
