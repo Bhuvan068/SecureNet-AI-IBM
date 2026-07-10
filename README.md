@@ -455,6 +455,14 @@ The SecureNet AI SOC Copilot only handles cybersecurity, SOC operations, inciden
 ## Settings
 
 <img width="1525" height="820" alt="image" src="https://github.com/user-attachments/assets/03039b4b-a59b-48de-9444-838acc3b9532" />
+<img width="1938" height="782" alt="image" src="https://github.com/user-attachments/assets/f49bda77-a58c-442a-8e70-3cf707dff22f" />
+<img width="1910" height="739" alt="image" src="https://github.com/user-attachments/assets/27f00ded-265f-4ca3-8d8e-a3f6722d0a1a" />
+<img width="1880" height="522" alt="image" src="https://github.com/user-attachments/assets/e5451aad-99c6-487f-b83b-c8510db6d7c9" />
+<img width="1880" height="423" alt="image" src="https://github.com/user-attachments/assets/74cbe0c7-d0b2-421c-baf4-6a0ed605b92b" />
+<img width="1916" height="910" alt="image" src="https://github.com/user-attachments/assets/d5acc2ad-d21b-4088-8acd-a3ec7f756fa9" />
+<img width="1760" height="920" alt="image" src="https://github.com/user-attachments/assets/7cfcd284-4f99-439a-9c39-79e77088b8b3" />
+
+
 
 ---
 
